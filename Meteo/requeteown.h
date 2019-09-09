@@ -1,6 +1,7 @@
 #ifndef REQUETEOWN_H
 #define REQUETEOWN_H
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -10,11 +11,14 @@ private:
     string ville;
     string pays;
     string cle;
+
+
 public:
     RequeteOWN();
-    void ModifierVille(string ville);
-    void ModifierPays(string pays);
+    void ModifierVille(string Uneville);
+    void ModifierPays(string Unpays);
     ~RequeteOWN();
+    string creerRequeteOWN();
 
 };
 

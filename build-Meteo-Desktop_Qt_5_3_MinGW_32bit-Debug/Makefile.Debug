@@ -169,7 +169,8 @@ debug/main.o: ../Meteo/main.cpp C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QCo
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qcontainerfwd.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qisenum.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qobject_impl.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qeventloop.h
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qeventloop.h \
+		../Meteo/requeteown.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\Meteo\main.cpp
 
 debug/requeteown.o: ../Meteo/requeteown.cpp ../Meteo/requeteown.h
