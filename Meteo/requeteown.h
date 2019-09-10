@@ -15,8 +15,8 @@ private:
 
 public:
     RequeteOWN();
-    void ModifierVille(string Uneville);
-    void ModifierPays(string Unpays);
+    inline void ModifierVille(string Uneville) {ville = Uneville;};
+    inline void ModifierPays(string Unpays) {pays = Unpays;};
     ~RequeteOWN();
     string creerRequeteOWN();
 
