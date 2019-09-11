@@ -1,11 +1,11 @@
 #include "meteoown.h"
-#include "requeteown.h"
-#include "SNClientHTTP.h"
+
 
 
 #include <iostream>
 #include <fstream>
 #include <string>
+using namespace std;
 
 meteoOWN::meteoOWN()
 {
@@ -16,13 +16,7 @@ void meteoOWN::rechercher(string v, string p)
 {
     RequeteOWN requete;
 
-    //cout<< "Pays ?"<<endl;
-    //cin>> pays;
     requete.ModifierPays(p);
-
-
-    //cout<< "Ville ?"<<endl;
-    //cin>> ville;
     requete.ModifierVille(v);
 
     string req = requete.creerRequeteOWN();
@@ -33,10 +27,17 @@ void meteoOWN::rechercher(string v, string p)
     clientOWN.connexionAuServeurParNomDeDomaine("api.openweathermap.org",80);
     clientOWN.envoyer(req);
     clientOWN.recevoir();
-    cout<<clientOWN.CorpsReponse();
+    reponseXML = clientOWN.CorpsReponse();
+    cout<<reponseXML;
 
     ofstream MeteoCourante;
     MeteoCourante.open("Meteo.xml");
-    MeteoCourante<< clientOWN.CorpsReponse();
+    MeteoCourante<< reponseXML;
     MeteoCourante.close();
+
+    reponseXML.find("current");
 }
+
+/*string extraireContenuEntreBalises(string balise, int positionDepart);
+{
+}*/
