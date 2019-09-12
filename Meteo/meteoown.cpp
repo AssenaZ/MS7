@@ -28,16 +28,27 @@ void meteoOWN::rechercher(string v, string p)
     clientOWN.envoyer(req);
     clientOWN.recevoir();
     reponseXML = clientOWN.CorpsReponse();
-    cout<<reponseXML;
+    //cout<<reponseXML;
 
     ofstream MeteoCourante;
     MeteoCourante.open("Meteo.xml");
     MeteoCourante<< reponseXML;
     MeteoCourante.close();
 
-    reponseXML.find("current");
+    //extraireContenuEntreBalises("temperature""speed",0);
+
 }
 
-/*string extraireContenuEntreBalises(string balise, int positionDepart);
+string meteoOWN::extraireContenuEntreBalises(string balise, int positionDepart)
 {
-}*/
+
+    int positionDepartBalise = reponseXML.find(balise,positionDepart);
+    int positionFinaleBalise = reponseXML.find("</"+balise+">",positionDepartBalise);
+    string chaineFinale = reponseXML.substr(positionDepartBalise+balise.length(),positionFinaleBalise-positionDepartBalise-balise.length()-1);
+
+    cout<<chaineFinale;
+    //cout<<positionFinaleBalise<<endl;
+    //cout<<positionDepartBalise;
+
+}
+

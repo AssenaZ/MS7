@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-string v;
+/*string v;
 string p;
 
 
@@ -22,11 +22,12 @@ string p;
 
 
     cout<< "Ville ?"<<endl;
-    cin>> v;
+    cin>> v;*/
 
 
     meteoOWN meteo;
-    meteo.rechercher(v,p);
+    meteo.rechercher("paris","france");
+    meteo.extraireContenuEntreBalises("temperature",0);
 
 
     return a.exec();

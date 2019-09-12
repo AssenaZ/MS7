@@ -18,14 +18,12 @@ public:
     string extraireContenuEntreBalises(string balise, int positionDepart);
 
 
+
 private:
     RequeteOWN requete;
     SNClientHTTP clientOWN;
     string reponseXML;
     ofstream meteo;
-
-
-
 };
 
 #endif // METEOOWN_H

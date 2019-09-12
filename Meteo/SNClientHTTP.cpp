@@ -19,7 +19,6 @@
 using namespace std;
 
 
-
 int SNClientHTTP::nbClientTCP = 0;
 
 SNClientHTTP::SNClientHTTP()

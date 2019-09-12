@@ -17,7 +17,6 @@ RequeteOWN::~RequeteOWN()
 
 }
 
-
 string RequeteOWN::creerRequeteOWN()
 {
     string http = "GET /data/2.5/weather?q="+ville+","+pays+"&units=metric&appid="+cle+"&mode=xml HTTP/1.1\r\n";
