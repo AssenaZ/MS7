@@ -35,20 +35,40 @@ void meteoOWN::rechercher(string v, string p)
     MeteoCourante<< reponseXML;
     MeteoCourante.close();
 
-    //extraireContenuEntreBalises("temperature""speed",0);
+    /*string balise;
+    cout<<"First balise: "<<endl;
+    cin>>balise;
+
+    string balise2;
+    cout<<"Second parameter : "<<endl;
+    cin>>balise2;*/
+
+    string reponse = extraireContenuEntreBalises("temperature", "value",0);
+    //string reponse2 = extraireContenuEntreBalises("speed", "value",0);
+    cout<<reponse;
+    //cout<<reponse2;
+
+
+
+
+  /*actuellement.temperature = extraireContenuEntreBalises("temperature","value",0);
+  actuellement.vitesseVent = extraireContenuEntreBalises("speed","value",0);*/
 
 }
 
-string meteoOWN::extraireContenuEntreBalises(string balise, int positionDepart)
+string meteoOWN::extraireContenuEntreBalises(string balise,string balise2 ,int positionDepart)
 {
 
     int positionDepartBalise = reponseXML.find(balise,positionDepart);
     int positionFinaleBalise = reponseXML.find("</"+balise+">",positionDepartBalise);
     string chaineFinale = reponseXML.substr(positionDepartBalise+balise.length(),positionFinaleBalise-positionDepartBalise-balise.length()-1);
 
-    cout<<chaineFinale;
-    //cout<<positionFinaleBalise<<endl;
-    //cout<<positionDepartBalise;
+
+   int positionDepartBalise2 = reponseXML.find(balise2,positionDepartBalise);
+   int positionFinaleBalise2 = reponseXML.find("\"",positionDepartBalise2+balise2.length()+1+1);
+   string chaineFinale2 = reponseXML.substr(positionDepartBalise2+balise2.length()+1+1,positionFinaleBalise2-positionDepartBalise2-balise2.length()-1-1);
+   return chaineFinale2;
+
 
 }
 
