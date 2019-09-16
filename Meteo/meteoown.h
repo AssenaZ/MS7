@@ -11,18 +11,20 @@
 using namespace std;
 
 
-struct ConditionsActuelles{
+typedef struct {
 
     string nomVillePays;
     string description;
-    int temperature;
-    int temperatureRessentie;
+    float temperature;
+    float temperatureMax;
+    float temperatureMin;
+    float temperatureRessentie;
     string directionVent;
-    int vitesseVent;
+    float vitesseVent;
     string urlIcone;
 
 
-};
+}ConditionsActuelles;
 
 
 class meteoOWN
@@ -31,7 +33,7 @@ public:
     meteoOWN();
     void rechercher(string v, string p);
     string extraireContenuEntreBalises(string balise,string balise2, int positionDepart);
-
+    ConditionsActuelles Actuellement();
 
 
 private:

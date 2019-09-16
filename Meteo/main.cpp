@@ -23,11 +23,14 @@ string p;
     cout<< "Pays ?"<<endl;
     cin>> p;
 
-
-
     meteoOWN meteo;
     meteo.rechercher(v,p);
-    //meteo.extraireContenuEntreBalises("temperature",0);
+
+    ConditionsActuelles Affiche = meteo.Actuellement();
+    cout << "La temperature actuelle est de : " << Affiche.temperature << " degres celsius " << endl;
+    cout <<  Affiche.temperatureMax << endl;
+    cout << Affiche.temperatureMin << endl;
+
 
 
     return a.exec();

@@ -50,7 +50,6 @@ void meteoOWN::rechercher(string v, string p)
 
 
   istringstream(extraireContenuEntreBalises("temperature","value",0)) >>  actuellement.temperature;
-   //cout<<"La temperature actuelle est de : " << actuellement.temperature << " degres celsius " << endl;
 
   istringstream(extraireContenuEntreBalises("temperature","max",0)) >>  actuellement.temperatureMax;
    //cout<<"La temperature max actuelle est de : " << actuellement.temperatureMax << " degres celsius "<< endl;
