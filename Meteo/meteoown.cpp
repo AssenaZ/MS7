@@ -28,7 +28,6 @@ void meteoOWN::rechercher(string v, string p)
     clientOWN.envoyer(req);
     clientOWN.recevoir();
     reponseXML = clientOWN.CorpsReponse();
-    //cout<<reponseXML;
 
     ofstream MeteoCourante;
     MeteoCourante.open("Meteo.xml");
@@ -48,16 +47,10 @@ void meteoOWN::rechercher(string v, string p)
     cout<<reponse<<endl;
     cout<<reponse2<<endl;*/
 
-
   istringstream(extraireContenuEntreBalises("temperature","value",0)) >>  actuellement.temperature;
-   //cout<<"La temperature actuelle est de : " << actuellement.temperature << " degres celsius " << endl;
-
   istringstream(extraireContenuEntreBalises("temperature","max",0)) >>  actuellement.temperatureMax;
-   //cout<<"La temperature max actuelle est de : " << actuellement.temperatureMax << " degres celsius "<< endl;
-
   istringstream(extraireContenuEntreBalises("temperature","min",0)) >>  actuellement.temperatureMin;
-  // cout<<"La temperature min actuelle est de : " << actuellement.temperatureMin << " degres celsius "<< endl;
-
+ // istringstream(extraireContenuEntreBalises("windSpeed","mps",0)) >>  actuellement.vitesseVent;
 
 }
 

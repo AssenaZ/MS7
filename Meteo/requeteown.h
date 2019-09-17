@@ -15,10 +15,11 @@ private:
 
 public:
     RequeteOWN();
-    inline void ModifierVille(string Uneville) {ville = Uneville;};
-    inline void ModifierPays(string Unpays) {pays = Unpays;};
+    inline void ModifierVille(string Uneville) {ville = Uneville;}
+    inline void ModifierPays(string Unpays) {pays = Unpays;}
     ~RequeteOWN();
     string creerRequeteOWN();
+    string previsionsRequeteOWN();
 
 };
 

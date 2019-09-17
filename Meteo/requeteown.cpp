@@ -19,7 +19,16 @@ RequeteOWN::~RequeteOWN()
 
 string RequeteOWN::creerRequeteOWN()
 {
-    string http = "GET /data/2.5/weather?q="+ville+","+pays+"&units=metric&appid="+cle+"&mode=xml HTTP/1.1\r\n";
+    string http = "GET /data/2.5/weather?q="+ville+","+pays+"&units=metric&lang=fr&appid="+cle+"&mode=xml HTTP/1.1\r\n";
+        http += "host: api.openweathermap.org\r\n";
+        http += "Connection: keep-alive\r\n";
+        http += "\r\n";
+       return http;
+}
+
+string RequeteOWN::previsionsRequeteOWN()
+{
+    string http = "GET /data/2.5/forecast?q="+ville+","+pays+"&units=metric&lang=fr&appid="+cle+"&mode=xml HTTP/1.1\r\n";
         http += "host: api.openweathermap.org\r\n";
         http += "Connection: keep-alive\r\n";
         http += "\r\n";

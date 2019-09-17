@@ -26,6 +26,20 @@ typedef struct {
 
 }ConditionsActuelles;
 
+typedef struct {
+
+    string nomVillePays;
+    string description;
+    float temperature;
+    float temperatureMax;
+    float temperatureMin;
+    float temperatureRessentie;
+    string directionVent;
+    float vitesseVent;
+    string urlIcone;
+
+}ConditionsAVenir;
+
 
 class meteoOWN
 {
@@ -42,6 +56,7 @@ private:
     string reponseXML;
     ofstream meteo;
     ConditionsActuelles actuellement;
+    ConditionsAVenir previsions[4];
 };
 
 

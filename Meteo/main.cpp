@@ -28,9 +28,9 @@ string p;
 
     ConditionsActuelles Affiche = meteo.Actuellement();
     cout << "La temperature actuelle est de : " << Affiche.temperature << " degres celsius " << endl;
-    cout <<  Affiche.temperatureMax << endl;
-    cout << Affiche.temperatureMin << endl;
-
+    cout<< "La temperature max est de : "  <<  Affiche.temperatureMax << " degres celsius " << endl;
+    cout << "La temperature min est de : " << Affiche.temperatureMin << " degres celsius " << endl;
+    //cout<< "La vitesse du vent est : " << Affiche.vitesseVent << endl;
 
 
     return a.exec();
