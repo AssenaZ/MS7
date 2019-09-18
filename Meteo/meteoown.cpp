@@ -19,18 +19,19 @@ void meteoOWN::rechercher(string v, string p)
     requete.ModifierPays(p);
     requete.ModifierVille(v);
 
-    string req = requete.creerRequeteOWN();
-    cout<<req;
+    string req;
+    req = requete.previsionsRequeteOWN();
+    //cout<<req;
 
     SNClientHTTP clientOWN;
+
 
     clientOWN.connexionAuServeurParNomDeDomaine("api.openweathermap.org",80);
     clientOWN.envoyer(req);
     clientOWN.recevoir();
-    reponseXML = clientOWN.CorpsReponse();
 
     ofstream MeteoCourante;
-    MeteoCourante.open("Meteo.xml");
+    MeteoCourante.open("PrevisionsMeteo.xml");
     MeteoCourante<< reponseXML;
     MeteoCourante.close();
 
@@ -47,10 +48,38 @@ void meteoOWN::rechercher(string v, string p)
     cout<<reponse<<endl;
     cout<<reponse2<<endl;*/
 
-  istringstream(extraireContenuEntreBalises("temperature","value",0)) >>  actuellement.temperature;
+  /*istringstream(extraireContenuEntreBalises("temperature","value",0)) >>  actuellement.temperature;
   istringstream(extraireContenuEntreBalises("temperature","max",0)) >>  actuellement.temperatureMax;
   istringstream(extraireContenuEntreBalises("temperature","min",0)) >>  actuellement.temperatureMin;
+*/
  // istringstream(extraireContenuEntreBalises("windSpeed","mps",0)) >>  actuellement.vitesseVent;
+
+
+
+
+  //-----------------------------------previsions---------------------------------------
+
+
+   /* if (clientOWN.LongueurCorpsReponse() > 0)
+    { cout << "OK" << endl;
+    reponseXML = clientOWN.CorpsReponse();
+    }
+    else {"error";}
+*/
+   pos = reponseXML.find("time");
+
+  for(int i=0; i<4; i++)
+  {
+      //cout<<pos<<endl;
+      istringstream(extraireContenuEntreBalises("temperature","value",pos)) >>  previsions[i].temperature;
+      istringstream(extraireContenuEntreBalises("temperature","max",pos)) >>  previsions[i].temperatureMax;
+      istringstream(extraireContenuEntreBalises("temperature","min",pos)) >>  previsions[i].temperatureMin;
+    // istringstream(extraireContenuEntreBalises("windSpeed","mps",0)) >>  actuellement.vitesseVent;
+
+  pos = reponseXML.find("time",pos+1);
+
+  }
+
 
 }
 
@@ -72,3 +101,25 @@ ConditionsActuelles meteoOWN::Actuellement()
 {
     return actuellement;
 }
+
+ConditionsAVenir meteoOWN::Previsions(int indice)
+{
+   return previsions[indice];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -48,9 +48,11 @@ public:
     void rechercher(string v, string p);
     string extraireContenuEntreBalises(string balise,string balise2, int positionDepart);
     ConditionsActuelles Actuellement();
+    ConditionsAVenir Previsions(int indice);
 
 
 private:
+    int pos;
     RequeteOWN requete;
     SNClientHTTP clientOWN;
     string reponseXML;
