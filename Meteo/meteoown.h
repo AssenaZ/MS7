@@ -14,6 +14,9 @@ using namespace std;
 typedef struct {
 
     string nomVillePays;
+    string DateA;
+    string DateF;
+    string date; //extraire date de la balise time
     string description;
     float temperature;
     float temperatureMax;
@@ -29,6 +32,9 @@ typedef struct {
 typedef struct {
 
     string nomVillePays;
+    string DateA;
+    string DateF;
+    string date; //extraire date de la balise time
     string description;
     float temperature;
     float temperatureMax;
@@ -52,7 +58,6 @@ public:
 
 
 private:
-    int pos;
     RequeteOWN requete;
     SNClientHTTP clientOWN;
     string reponseXML;

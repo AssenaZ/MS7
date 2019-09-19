@@ -2,6 +2,7 @@
 #include "requeteown.h"
 #include "meteoown.h"
 #include "SNClientHTTP.h"
+#include <QTime>
 
 #include <iostream>
 #include <fstream>
@@ -27,6 +28,7 @@ string p;
     meteo.rechercher(v,p);
 
     ConditionsActuelles Affiche = meteo.Actuellement();
+    cout << "Previsions de : " << Affiche.DateF << "   a    " << Affiche.DateA << endl;
     cout << "La temperature actuelle est de : " << Affiche.temperature << " degres celsius " << endl;
     cout<< "La temperature max est de : "  <<  Affiche.temperatureMax << " degres celsius " << endl;
     cout << "La temperature min est de : " << Affiche.temperatureMin << " degres celsius " << endl;
@@ -36,15 +38,15 @@ string p;
 
     for(int indice=0;indice<4;indice++)
     {
+            ConditionsAVenir Prevision = meteo.Previsions(indice);
 
-    ConditionsAVenir Prevision = meteo.Previsions(indice);
-    cout << "La temperature a l'avenir va etre de : " << Prevision.temperature << " degres celsius " << endl;
-    cout<< "La temperature max a l'avenir va etre de : "  <<  Prevision.temperatureMax << " degres celsius " << endl;
-    cout << "La temperature min a l'avenir va etre de : " << Prevision.temperatureMin << " degres celsius " << endl;
-    cout<<endl;
+            cout << "Previsions de : " <<Prevision.DateF << "   a    " << Prevision.DateA << endl;
+            cout << "La temperature a l'avenir va etre de : " << Prevision.temperature << " degres celsius " << endl;
+            cout<< "La temperature max a l'avenir va etre de : "  <<  Prevision.temperatureMax << " degres celsius " << endl;
+            cout << "La temperature min a l'avenir va etre de : " << Prevision.temperatureMin << " degres celsius " << endl;
+            cout<<endl;
+     }
 
-
-    }
     return a.exec();
 }
 
