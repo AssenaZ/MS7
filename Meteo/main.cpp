@@ -3,7 +3,7 @@
 #include "meteoown.h"
 #include "SNClientHTTP.h"
 #include <QTime>
-
+#include <ctime>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -27,8 +27,16 @@ string p;
     meteoOWN meteo;
     meteo.rechercher(v,p);
 
+
     ConditionsActuelles Affiche = meteo.Actuellement();
-    cout << "Previsions de : " << Affiche.DateF << "   a    " << Affiche.DateA << endl;
+
+//--------Current time--------------------------
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+//----------------------------------------------
+
+
+    cout << "Meteo de: "<< ltm->tm_hour << "H" << ltm->tm_min << endl;
     cout << "La temperature actuelle est de : " << Affiche.temperature << " degres celsius " << endl;
     cout<< "La temperature max est de : "  <<  Affiche.temperatureMax << " degres celsius " << endl;
     cout << "La temperature min est de : " << Affiche.temperatureMin << " degres celsius " << endl;
